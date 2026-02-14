@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Krishnakumar M. Portfolio Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Portfolio Color Palette */
+    --background: 0 0% 100%;
+    --foreground: 217 91% 15%;
+    
+    /* Primary Teal */
+    --primary: 178 85% 34%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 178 85% 45%;
+    
+    /* Dark Navy */
+    --secondary: 217 91% 15%;
+    --secondary-foreground: 0 0% 98%;
+    
+    /* Accent Colors */
+    --accent-coral: 9 100% 70%;
+    --accent-yellow: 48 96% 53%;
+    --accent-violet: 258 90% 66%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 217 91% 15%;
+    
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    
+    --border: 214.3 31.8% 91.4%;
+    --ring: 178 85% 34%;
+    
+    --radius: 0.75rem;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(178 85% 34%), hsl(178 85% 45%));
+    --gradient-section: linear-gradient(180deg, hsl(0 0% 98%), hsl(0 0% 100%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 40% 98%));
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -2px hsl(178 85% 34% / 0.1);
+    --shadow-card: 0 8px 25px -5px hsl(217 91% 15% / 0.1);
+    --shadow-glow: 0 0 30px hsl(178 85% 34% / 0.3);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --bounce-gentle: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    --background: 217 91% 8%;
+    --foreground: 0 0% 98%;
+    --card: 217 91% 10%;
+    --card-foreground: 0 0% 98%;
+    --muted: 217 91% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --border: 217 91% 20%;
+    --gradient-section: linear-gradient(180deg, hsl(217 91% 8%), hsl(217 91% 10%));
+    --gradient-card: linear-gradient(145deg, hsl(217 91% 10%), hsl(217 91% 12%));
+    --shadow-card: 0 8px 25px -5px hsl(0 0% 0% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    font-family: 'Inter', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero Section */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .section-gradient {
+    background: var(--gradient-section);
+  }
+
+  .card-gradient {
+    background: var(--gradient-card);
+  }
+
+  /* Animations */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-bounce-gentle {
+    animation: bounceGentle 0.8s var(--bounce-gentle) forwards;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  /* Skill Badges */
+  .skill-badge {
+    @apply inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-300;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .skill-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Project Cards */
+  .project-card {
+    @apply rounded-2xl p-6 transition-all duration-300 hover:scale-105;
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+  }
+
+  .project-card:hover {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Buttons */
+  .btn-hero {
+    @apply px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300;
+    background: var(--gradient-hero);
+    color: hsl(var(--primary-foreground));
+    box-shadow: var(--shadow-soft);
+  }
+
+  .btn-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-secondary {
+    @apply px-8 py-4 rounded-full font-semibold text-lg border-2 transition-all duration-300;
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary));
+    background: transparent;
+  }
+
+  .btn-secondary:hover {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    transform: translateY(-2px);
+  }
+}
+
+@layer utilities {
+  /* Keyframes */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes bounceGentle {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.2);
+    }
+    to {
+      box-shadow: 0 0 30px hsl(var(--primary) / 0.4);
+    }
+  }
+
+  /* Typography */
+  .text-gradient {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
